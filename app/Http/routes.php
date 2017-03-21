@@ -56,9 +56,9 @@ Route::post('createuser', function(Request $request) {
    $user->email = Request::input('email');
    $bool =  Request::input("admin")==1 ? true : false;
    $user->admin = $bool;
-   echo $user;
+   //echo $user;
    $user->save();
-   echo "done";
+   return view('welcome');
 })->middleware('admin');
 
 
@@ -67,7 +67,7 @@ Route::post('createuser', function(Request $request) {
 //run the app and make a request to this url
 
 Route::get('defaultadmin', function(Request $request) {
-   $user =  new App\Users; 
+   $user =  new App\Users;
    $user->name = "admin";
    $user->password =  Hash::make("dh67cl");
    $user->email = 'madushanka.priyamal@yahoo.com';
